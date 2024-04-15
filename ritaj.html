@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ritaj.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Dashbord</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href= "#">Academy Dashboard</a>
+        <button class="navbar-toggler"type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Teachers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">numbers</a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Statistics</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="search" aria-label="search">
+                <button class="btn btn-outline-succes bg-light" type="submit">search</button>
+            </form>
+        
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <h2 class="blue-text">Recent Courses</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Course ID</th>
+                                <th>Course Name</th>
+                                <th>Student Name</th>
+                                <th>Instructor</th>
+                                <th>introduction number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Introduction to Programming</td>
+                                <td>ritaj</td>
+                                <td>541008345328677654</td>
+                                <td>John Doe</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Data Structures and Algorithms</td>
+                                <td>ritaj</td>
+                                <td>560868712587315913</td>
+                                <td>Jane Smith</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Web Development</td>
+                                <td>ritaj</td>
+                                <td>312345008712347690</td>
+                                <td>Michael Johnson</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Programming</td>
+                                <td>ritaj</td>
+                                <td>jorjina</td>
+                                <td>312345008712347690</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <h2 class="blue-text">Student Statistics</h2>
+                    <p>Total Students Enrolled: <strong class="green-bg">250</strong></p>
+                    <p>Active Students: <strong class="green-bg">200</strong></p>
+                    <p>Completed Courses: <strong class="green-bg">150</strong></p>
+                    <canvas id="studentChart"></canvas>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

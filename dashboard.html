@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .navbar {
+            background-color: #007bff !important;
+        }
+        .navbar-brand {
+            color: #ffffff !important;
+        }
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            margin-top: 0;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .blue-text {
+            color: #007bff !important;
+        }
+        .green-bg {
+            background-color: #28a745;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href= "#">Academy Dashboard</a>
+        <button class="navbar-toggler"type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Teachers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Statistics</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <h2 class="blue-text">Recent Courses</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Course ID</th>
+                                <th>Course Name</th>
+                                <th>Instructor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Introduction to Programming</td>
+                                <td>John Doe</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Data Structures and Algorithms</td>
+                                <td>Jane Smith</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Web Development</td>
+                                <td>Michael Johnson</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <h2 class="blue-text">Student Statistics</h2>
+                    <p>Total Students Enrolled: <strong class="green-bg">250</strong></p>
+                    <p>Active Students: <strong class="green-bg">200</strong></p>
+                    <p>Completed Courses: <strong class="green-bg">150</strong></p>
+                    <canvas id="studentChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <h2 class="blue-text">Teacher Statistics</h2>
+                    <p>Total Teachers: <strong class="green-bg test">50</strong></p>
+                    <p>Active Teachers: <strong class="green-bg">40</strong></p>
+                    <p>Courses Taught: <strong class="green-bg">30</strong></p>
+                    <canvas id="teacherChart"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <h2 class="blue-text">Student Table</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Enrollment Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>101</td>
+                                <td>Alice Smith</td>
+                                <td>2022-03-15</td>
+                            </tr>
+                            <tr>
+                                <td>102</td>
+                                <td>Bob Johnson</td>
+                                <td>2022-04-20</td>
+                            </tr>
+                            <tr>
+                                <td>103</td>
+                                <td>Charlie Brown</td>
+                                <td>2022-02-10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var ctx1 = document.getElementById('studentChart').getContext('2d');
+        var studentChart = new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: ['Active Students', 'Completed Courses'],
+                datasets: [{
+                    label: '# of Students/Courses',
+                    data: [200, 150],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        var ctx2 = document.getElementById('teacherChart').getContext('2d');
+        var teacherChart = new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Active Teachers', 'Courses Taught'],
+                datasets: [{
+                    label: '# of Teachers/Courses',
+                    data: [40, 30],
+                    backgroundColor: [
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 205, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

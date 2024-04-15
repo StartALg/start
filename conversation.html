@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversation</title>
+    <!-- Link to CSS -->
+</head>
+<style>
+    /* Layout styles */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar (conversations list) */
+.sidebar {
+    width: 30%;
+    background-color: #f7f7f7;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* Conversation item in sidebar */
+.conversation-item {
+    padding: 10px;
+    border-bottom: 1px solid #e7e7e7;
+    cursor: pointer;
+}
+
+.conversation-item:hover {
+    background-color: #e7e7e7;
+}
+
+/* Profile image */
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Chat window (messages display) */
+.chat-window {
+    width: 70%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Message in chat window */
+.message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Sender's photo */
+.message img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Message text */
+.message .text {
+    margin-right: 10px;
+}
+
+/* Message time */
+.message .time {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+</style>
+<body>
+    <div class="chat-window">
+        <!-- Fetch the conversation ID from the URL -->
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const conversationId = urlParams.get('id');
+            
+            // Fetch messages based on conversationId (this is just a placeholder for your actual fetching code)
+            // For example, you can make an API call to get messages for the conversationId
+            const messages = [
+                {
+                    sender: 'John Doe',
+                    text: 'Hello, how are you?',
+                    time: '10:00 AM',
+                    photo: 'assets/johndoe.jpg'
+                },
+                {
+                    sender: 'Jane Smith',
+                    text: 'I\'m good, thank you!',
+                    time: '10:05 AM',
+                    photo: 'assets/janesmith.jpg'
+                }
+                // Add more messages here
+            ];
+        </script>
+        
+        <!-- Messages list -->
+        <div id="messages-list">
+            <!-- This section will be populated by JavaScript -->
+        </div>
+
+        <!-- Render messages using JavaScript -->
+        <script>
+            const messagesList = document.getElementById('messages-list');
+
+            messages.forEach(message => {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+
+                const senderDiv = document.createElement('div');
+                senderDiv.classList.add('sender');
+                senderDiv.textContent = message.sender;
+
+                const textDiv = document.createElement('div');
+                textDiv.classList.add('text');
+                textDiv.textContent = message.text;
+
+                const timeDiv = document.createElement('div');
+                timeDiv.classList.add('time');
+                timeDiv.textContent = message.time;
+
+                // Add sender's photo
+                const photoImg = document.createElement('img');
+                photoImg.src = message.photo;
+                photoImg.alt = message.sender;
+                photoImg.classList.add('profile-img');
+
+                // Append elements to the message div
+                messageDiv.appendChild(photoImg);
+                messageDiv.appendChild(senderDiv);
+                messageDiv.appendChild(textDiv);
+                messageDiv.appendChild(timeDiv);
+
+                // Append the message div to the messages list
+                messagesList.appendChild(messageDiv);
+            });
+        </script>
+    </div>
+</body>
+
+</html>

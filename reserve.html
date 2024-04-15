@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Reservation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        input[type="text"],
+        input[type="datetime-local"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical; /* Allow vertical resizing */
+            min-height: 100px; /* Specify a minimum height */
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffc451;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #e0a800;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        /* Dialog box styles */
+        #dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 300px;
+        }
+        #dialogContent {
+            margin-bottom: 20px;
+        }
+        #closeDialog {
+            background-color: #ffc451;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            text-align: center;
+        }
+        #closeDialog:hover {
+            background-color: #e0a800;
+        }
+        /* Icon styles */
+        .fa {
+            margin-right: 10px;
+            font-size: 20px;
+            color: #ffc451;
+        }
+    </style>
+</head>
+<body>
+
+<form id="reservationForm" action="process_reservation.php" method="post">
+    <h2><i class="fas fa-calendar-alt"></i> Meeting Reservation</h2>
+    <label for="meetingTitle"><i class="fas fa-pencil-alt"></i> Meeting Title:</label>
+    <input type="text" id="meetingTitle" name="meetingTitle" placeholder="Enter meeting title" required>
+
+    <label for="meetingDateTime"><i class="fas fa-calendar-day"></i> Meeting Date and Time:</label>
+    <input type="datetime-local" id="meetingDateTime" name="meetingDateTime" required>
+
+    <label for="personName"><i class="fas fa-user"></i> Your Name:</label>
+    <input type="text" id="personName" name="personName" placeholder="Enter your name" required>
+
+    <label for="personEmail"><i class="fas fa-envelope"></i> Your Email:</label>
+    <input type="email" id="personEmail" name="personEmail" placeholder="Enter your email" required>
+
+    <label for="comments"><i class="fas fa-comment"></i> Additional Comments:</label>
+    <textarea id="comments" name="comments" placeholder="Enter any additional comments"></textarea>
+    
+    <input type="hidden" id="tutorEmail" name="tutorEmail" value="tutor@example.com">
+    
+    <input type="submit" value="Reserve Meeting">
+</form>
+
+<!-- Dialog box for displaying form details -->
+<div id="dialog">
+    <h2><i class="fas fa-info-circle"></i> Meeting Reservation Details</h2>
+    <div id="dialogContent"></div>
+    <button id="closeDialog"><i class="fas fa-times"></i> Close</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<script>
+    document.getElementById("reservationForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+        
+        // Get form data
+        const formData = new FormData(this);
+        
+        // Build dialog content
+        let dialogContent = '<ul>';
+        for (const [name, value] of formData) {
+            dialogContent += `<li><i class="fas fa-check-circle"></i> <strong>${name}:</strong> ${value}</li>`;
+        }
+        dialogContent += '</ul>';
+        
+        // Display dialog
+        const dialog = document.getElementById("dialog");
+        const dialogContentElement = document.getElementById("dialogContent");
+        dialogContentElement.innerHTML = dialogContent;
+        dialog.style.display = "block";
+    });
+    
+    // Close dialog button
+    document.getElementById("closeDialog").addEventListener("click", function() {
+        document.getElementById("dialog").style.display = "none";
+    });
+</script>
+
+</body>
+</html>

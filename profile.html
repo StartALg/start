@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        /* General styles */
+        body {
+            background-color: #f8f9fa;
+            color: #151515; /* Text color */
+        }
+
+        .profile-header {
+            margin-bottom: 20px;
+        }
+
+        .profile-image {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+
+        /* Styling for tabs */
+        .nav-tabs .nav-link {
+            color: #151515;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #ffc451; /* Active tab background color */
+            color: #151515; /* Active tab text color */
+        }
+
+        /* Styles for responsive design */
+        @media (max-width: 767px) {
+            .profile-header {
+                text-align: left;
+            }
+
+            .profile-image {
+                margin: 0 auto 20px;
+                width: 100px;
+                height: 100px;
+            }
+
+            .col-md-4, .col-md-8 {
+                width: 100%;
+                text-align: left;
+            }
+
+            /* Adjust tab navigation for smaller screens */
+            .nav-tabs {
+                flex-direction: column;
+                align-items: left;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: left;
+            }
+            /* Layout styles */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar (conversations list) */
+.sidebar {
+    width: 30%;
+    background-color: #f7f7f7;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* Conversation item in sidebar */
+.conversation-item {
+    padding: 10px;
+    border-bottom: 1px solid #e7e7e7;
+    cursor: pointer;
+}
+
+.conversation-item:hover {
+    background-color: #e7e7e7;
+}
+
+/* Conversation item name */
+.conversation-item .name {
+    font-weight: bold;
+}
+
+/* Chat window (messages display) */
+.chat-window {
+    width: 70%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Message in chat window */
+.message {
+    margin-bottom: 10px;
+}
+
+/* Sender of the message */
+.message-sender {
+    font-weight: bold;
+}
+/* Profile image in conversation items */
+.profile-img {
+    width: 20px !important; /* Adjust width as needed */
+    height: 40px; /* Adjust height as needed */
+    border-radius: 50%; /* Make the image circular */
+    margin-right: 10px; /* Add space between image and name */
+}
+
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Profile Header -->
+        <div class="row profile-header">
+            <div class="col-md-4">
+                <img src="assets/img/kai.jpg" alt="Profile Picture" class="profile-image">
+            </div>
+            <div class="col-md-8">
+                <h1>Example</h1>
+                <p>this is an example</p>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="true">
+                    <i class="fas fa-envelope"></i> Messages
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="products-tab" data-bs-toggle="tab" data-bs-target="#products" type="button" role="tab" aria-controls="products" aria-selected="false">
+                    <i class="fas fa-box"></i> My Products
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="consultation-tab" data-bs-toggle="tab" data-bs-target="#consultation" type="button" role="tab" aria-controls="consultation" aria-selected="false">
+                    <i class="fas fa-comments"></i> Consultation
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">
+                    <i class="fas fa-cog"></i> Settings
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button" role="tab" aria-controls="payment" aria-selected="false">
+                    <i class="fas fa-credit-card"></i> Payment
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" onclick="goBack()">Go Back</button>
+            </li>
+            
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="logout-tab" data-bs-toggle="tab" data-bs-target="#logout" type="button" role="tab" aria-controls="logout" aria-selected="false">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="profileTabsContent">
+            <!-- Messages Tab -->
+            <div class="tab-pane fade show active" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+                <h2>Messages</h2>
+                <p>This is the messages section where you can include your messages or communications.</p>
+                
+                <!-- Example Messages -->
+                <div class="container">
+                    <!-- Sidebar (conversations list) -->
+                    <div class="sidebar">
+                        <div class="conversation-item" onclick="openConversation(1)">
+                            <div class="name">Rami</div>
+                            <img src="assets/img/cover2.jpg" alt="John Doe"
+                            style="width: 40px;
+                            height: 40px; 
+                            border-radius: 50%; 
+                            margin-right: 10px;"   class="profile-img">
+                        </div>
+                        <div class="conversation-item" onclick="openConversation(2)">
+                            <div class="name">Sami</div>
+                            <img src="assets/img/cover2.jpg" alt="John Doe"
+                            style="width: 40px;
+                            height: 40px; 
+                            border-radius: 50%; 
+                            margin-right: 10px;"   class="profile-img">
+                        </div>
+                        <!-- Add more conversation items here -->
+                    </div>
+                </div>
+            
+                
+                <!-- Button to Go Back -->
+                
+            </div>
+
+            <!-- Products Tab -->
+            <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
+                <h2>Products</h2>
+                <p>This is the products section where you can showcase the products you offer. Below are some example products:</p>
+                
+                <!-- Add Product Button -->
+                <button class="btn btn-primary mb-3" onclick="addProduct()">Add Product</button>
+
+                <!-- Products Cards -->
+                <div class="row">
+                    <!-- Product Card 1 -->
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="assets/img/cover1.jpg" class="card-img-top" alt="Product 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Product 1</h5>
+                                <p class="card-text">Description of Product 1.</p>
+                                <p class="card-text"><strong>Price: $20</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="assets/img/kai.jpg" class="card-img-top" alt="Product 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Product 2</h5>
+                                <p class="card-text">Description of Product 2.</p>
+                                <p class="card-text"><strong>Price: $30</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="assets/img/kai.jpg" class="card-img-top" alt="Product 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Product 3</h5>
+                                <p class="card-text">Description of Product 3.</p>
+                                <p class="card-text"><strong>Price: $40</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consultation Tab -->
+            <div class="tab-pane fade" id="consultation" role="tabpanel" aria-labelledby="consultation-tab">
+                <h2>Consultation</h2>
+                <p>This is the consultation section where you can provide consultation services.</p>
+            </div>
+
+            <!-- Accounting Tab -->
+            <div class="tab-pane fade" id="accounting" role="tabpanel" aria-labelledby="accounting-tab">
+                <h2>Accounting</h2>
+                <p>This is the accounting section where you can manage your financial records.</p>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                <h2>Settings</h2>
+                <p>This is the settings section where you can configure your profile or account settings. Below are some customizable options:</p>
+
+                <!-- Profile Information Form -->
+                <form id="profile-form">
+                    <div class="mb-3">
+                        <label for="profile-name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="profile-name" name="profile-name" value="StartUp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="profile-email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="profile-email" name="profile-email" value="startup@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="profile-password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="profile-password" name="profile-password" value="********">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Payment Tab -->
+            <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                <h2>Payment</h2>
+                <p>This is the payment section where you can manage your payment options. Below are some payment methods:</p>
+
+                <!-- Payment Methods -->
+                <ul class="list-group mb-3">
+                    <li class="list-group-item">
+                        <div class="payment-method">
+                            <div class="payment-method-icon"><i class="fas fa-credit-card"></i></div>
+                            <div class="payment-method-info">
+                                <strong>Credit Card</strong>
+                                <p>**** **** **** 1234</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="payment-method">
+                            <div class="payment-method-icon"><i class="fas fa-paypal"></i></div>
+                            <div class="payment-method-info">
+                                <strong>PayPal</strong>
+                                <p>startup@example.com</p>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Add more payment methods here -->
+                </ul>
+            </div>
+
+            <!-- Logout Tab -->
+            <div class="tab-pane fade" id="logout" role="tabpanel" aria-labelledby="logout-tab">
+                <h2>Logout</h2>
+                <p>This is the logout section where you can sign out of your account.</p>
+                <button class="btn btn-danger" onclick="logoutUser()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for additional functionality -->
+    <script>
+        // JavaScript function to handle "Go Back" button click
+        function goBack() {
+            // Add your go back functionality here
+            // For example, you can navigate to the previous page
+            window.history.back();
+        }
+
+        // JavaScript function to handle logout
+        function logoutUser() {
+            // Add your logout functionality here
+            alert('You have been logged out!');
+            // Perform the actual logout process here
+        }
+
+        // JavaScript function to handle adding products
+        function addProduct() {
+            // Add your add product functionality here
+            alert('Add Product button clicked!');
+        }
+    </script>
+    <script>
+        function openConversation(conversationId) {
+            // Navigate to the conversation page
+            window.location.href = `conversation.html?id=${conversationId}`;
+        }
+    </script>
+</body>
+
+</html>
