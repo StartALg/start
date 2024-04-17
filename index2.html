@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+  .nav-tabs .nav-link {
+            color: #151515;
+        }
 
+        .nav-tabs .nav-link.active {
+            background-color: #ffc451; /* Active tab background color */
+            color: #151515; /* Active tab text color */
+        }
+
+</style>
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -52,8 +62,6 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -136,11 +144,6 @@
 marketing, consulting, and exporting services , and provides suppliers and importers the opportunity to
 benefit from innovative products.
             </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i>Expert guidance in business development, strategy, and operational efficiency.</li>
-              <li><i class="ri-check-double-line"></i> Comprehensive studies and platform development for Business Model Canvas.</li>
-              <li><i class="ri-check-double-line"></i> Help with navigating international markets, export regulations, and distribution.</li>
-            </ul>
           </div>
         </div>
 
@@ -150,47 +153,147 @@ benefit from innovative products.
       <!-- Products Tab -->
       <div class="container" >
        <h2>Products</h2>
+       <!-- Categories Tabs -->
+    <ul class="nav nav-tabs" id="productCategoryTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="category1-tab" data-bs-toggle="tab" data-bs-target="#category1" type="button" role="tab" aria-controls="category1" aria-selected="true">Category 1</button>
+      </li>
+      <li class="nav-item" role="presentation">
+          <button class="nav-link" id="category2-tab" data-bs-toggle="tab" data-bs-target="#category2" type="button" role="tab" aria-controls="category2" aria-selected="false">Category 2</button>
+      </li>
+      <li class="nav-item" role="presentation">
+          <button class="nav-link" id="category3-tab" data-bs-toggle="tab" data-bs-target="#category2" type="button" role="tab" aria-controls="category2" aria-selected="false">Category 3</button>
+      </li>
+     
+      <!-- Add more category tabs as needed -->
+  </ul>
        <!-- Products Cards -->
-       <div class="row">
-           <!-- Product Card 1 -->
-           <div class="col-md-4">
-               <div class="card mb-4">
-                   <img src="assets/img/cover1.jpg" class="card-img-top" alt="Product 1">
-                   <div class="card-body">
-                       <h5 class="card-title">Product 1</h5>
-                       <p class="card-text">Description of Product 1.</p>
-                       <p class="card-text"><strong>Price: $20</strong></p>
-                       <button class="btn btn-success">Add to Cart</button>
-                   </div>
-               </div>
-           </div>
-   
-           <!-- Product Card 2 -->
-           <div class="col-md-4">
-               <div class="card mb-4">
-                   <img src="assets/img/kai.jpg" class="card-img-top" alt="Product 2">
-                   <div class="card-body">
-                       <h5 class="card-title">Product 2</h5>
-                       <p class="card-text">Description of Product 2.</p>
-                       <p class="card-text"><strong>Price: $30</strong></p>
-                       <button class="btn btn-success">Add to Cart</button>
-                   </div>
-               </div>
-           </div>
-   
-           <!-- Product Card 3 -->
-           <div class="col-md-4">
-               <div class="card mb-4">
-                   <img src="assets/img/kai.jpg" class="card-img-top" alt="Product 3">
-                   <div class="card-body">
-                       <h5 class="card-title">Product 3</h5>
-                       <p class="card-text">Description of Product 3.</p>
-                       <p class="card-text"><strong>Price: $40</strong></p>
-                       <button class="btn btn-success">Add to Cart</button>
-                   </div>
-               </div>
-           </div>
-       </div>
+       <div class="tab-content" id="productCategoryTabsContent">
+        <!-- Category 1 Tab -->
+        <div class="tab-pane fade show active" id="category1" role="tabpanel" aria-labelledby="category1-tab">
+            <!-- Add product cards for Category 1 -->
+            
+            <div class="row">
+                <!-- Product Card 1 -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/img/cover1.jpg" class="card-img-top" alt="Product 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 1</h5>
+                            <p class="card-text">Description of Product 1.</p>
+                            <p class="card-text"><strong>Price: $20</strong></p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Product Card 2 -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/img/kai.jpg" class="card-img-top" alt="Product 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 2</h5>
+                            <p class="card-text">Description of Product 2.</p>
+                            <p class="card-text"><strong>Price: $30</strong></p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Product Card 3 -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/img/kai.jpg" class="card-img-top" alt="Product 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 3</h5>
+                            <p class="card-text">Description of Product 3.</p>
+                            <p class="card-text"><strong>Price: $40</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- Add more product cards as needed -->
+            </div>
+        </div>
+
+        <!-- Category 2 Tab -->
+        <div class="tab-pane fade" id="category2" role="tabpanel" aria-labelledby="category2-tab">
+            <div class="row">
+                <!-- Product Card 1 -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/img/cover1.jpg" class="card-img-top" alt="Product 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 1</h5>
+                            <p class="card-text">Description of Product 1.</p>
+                            <p class="card-text"><strong>Price: $20</strong></p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Product Card 2 -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/img/kai.jpg" class="card-img-top" alt="Product 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 2</h5>
+                            <p class="card-text">Description of Product 2.</p>
+                            <p class="card-text"><strong>Price: $30</strong></p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Product Card 3 -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/img/kai.jpg" class="card-img-top" alt="Product 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 3</h5>
+                            <p class="card-text">Description of Product 3.</p>
+                            <p class="card-text"><strong>Price: $40</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Category 3 Tab -->
+        <div class="tab-pane fade" id="category3" role="tabpanel" aria-labelledby="category2-tab">
+            <div class="row">
+                <!-- Product Card 1 -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/img/cover1.jpg" class="card-img-top" alt="Product 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 1</h5>
+                            <p class="card-text">Description of Product 1.</p>
+                            <p class="card-text"><strong>Price: $20</strong></p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Product Card 2 -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/img/kai.jpg" class="card-img-top" alt="Product 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 2</h5>
+                            <p class="card-text">Description of Product 2.</p>
+                            <p class="card-text"><strong>Price: $30</strong></p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Product Card 3 -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/img/kai.jpg" class="card-img-top" alt="Product 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 3</h5>
+                            <p class="card-text">Description of Product 3.</p>
+                            <p class="card-text"><strong>Price: $40</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
    </div>
    </section>
     <!-- ======= Clients Section ======= -->
@@ -421,77 +524,6 @@ benefit from innovative products.
     </section><!-- End Testimonials Section -->
 
     <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Team</h2>
-          <p>Check our Team</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="300">
-              <div class="member-img">
-                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="200">
-              <div class="member-img">
-                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
-              </div>
-            </div>
-          </div>
-
-          
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img">
-                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Team Section -->
-
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
