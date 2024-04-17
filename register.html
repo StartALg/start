@@ -61,7 +61,7 @@
 <body>
 
 
-<form id="registerForm" onsubmit="return validateForm()" action="home.html" method="post">
+<form id="registerForm" onsubmit="return validateForm()"  method="post">
     <div class="form-group">
         <label for="firstName">First Name:</label>
         <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter your first name" required>
@@ -109,7 +109,9 @@
         <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
         <label for="acceptTerms" class="form-check-label">I accept the <a href="#">terms and conditions</a></label>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Register
+        <a href="home.html" class="get-started-btn scrollto"></a>
+    </button>
     <div id="errorMessage" class="error"></div>
 </form>
 
