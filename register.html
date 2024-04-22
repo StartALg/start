@@ -61,7 +61,7 @@
 <body>
 
 
-<form id="registerForm" onsubmit="return validateForm()">
+<form id="registerForm" onsubmit="return validateForm()" action="index2.html">
     <div class="form-group">
         <label for="firstName">First Name:</label>
         <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter your first name" required>
@@ -87,31 +87,30 @@
         <input type="text" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
     </div>
     <div class="form-group">
-        <label for="pays">Country:</label>
-        <input type="text" id="pays" name="pays" class="form-control" placeholder="Enter your country" required>
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" class="form-control" placeholder="Enter your country" required>
     </div>
     <div class="form-group">
-        <label for="entrepriseType">Type d’entreprise:</label>
-        <select id="entrepriseType" name="entrepriseType" class="form-control">
+        <label for="companyType">Company Type:</label>
+        <select id="companyType" name="companyType" class="form-control">
             <option value="startups">Startup</option>
-            <option value="microentreprise">Micro entreprise</option>
+            <option value="microenterprise">Micro enterprise</option>
         </select>
     </div>
     <div class="form-group">
-        <label for="inscripteurType">Type d’inscripteur:</label>
-        <select id="inscripteurType" name="inscripteurType" class="form-control">
-            <option value="importateur/exportateur">Importateur/Exportateur</option>
-            <option value="fournisseurs">Fournisseur</option>
-            <option value="acheteurs">Acheteur</option>
+        <label for="registerType">Register Type:</label>
+        <select id="registerType" name="registerType" class="form-control">
+            <option value="importer">Importer</option>
+            <option value="exporter">Exporter</option>
+            <option value="supplier">Supplier</option>
+            <option value="buyer">Buyer</option>
         </select>
     </div>
     <div class="form-group" >
         <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
         <label for="acceptTerms" class="form-check-label">I accept the <a href="#">terms and conditions</a></label>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg btn-block">Register
-        <a href="home.html" class="get-started-btn scrollto"></a>
-    </button>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
     <div id="errorMessage" class="error"></div>
 </form>
 
@@ -123,14 +122,14 @@
         var password = document.getElementById("password").value;
         var email = document.getElementById("email").value;
         var phone = document.getElementById("phone").value;
-        var pays = document.getElementById("pays").value;
-        var entrepriseType = document.getElementById("entrepriseType").value;
-        var inscripteurType = document.getElementById("inscripteurType").value;
+        var country = document.getElementById("country").value;
+        var companyType = document.getElementById("companyType").value;
+        var registerType = document.getElementById("registerType").value;
         var acceptTerms = document.getElementById("acceptTerms").checked;
         var errorMessage = document.getElementById("errorMessage");
 
         // Check if all fields are filled
-        if (!firstName || !lastName || !username || !password || !email || !phone || !pays || !entrepriseType || !inscripteurType || !acceptTerms) {
+        if (!firstName || !lastName || !username || !password || !email || !phone || !country || !companyType || !registerType || !acceptTerms) {
             errorMessage.textContent = "Please fill out all fields and accept the terms and conditions.";
             return false;
         }
